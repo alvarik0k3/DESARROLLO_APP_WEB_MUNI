@@ -1,1 +1,35 @@
 <h1>GESTION DE USUARIO</h1>
+
+<form method="post" action="{% url 'index' %}">
+    {% csrf_token %}
+<table>
+    <tr>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Correo</th>
+        <th>Telefono</th>
+        <th>Perfil</th>
+        <th>Acciones</th>
+    </tr>
+    <tr>
+        {% for field in form%}
+        <td>{{field}}</td>
+        {%endfor%}
+        <td><button name="Save">save</button></td>
+    </tr>
+    {% for funcionario in funcionario %}
+    <tr>
+        <td>{{ funcionario.nombre }}</td>
+        <td>{{ funcionario.apellido }}</td>
+        <td>{{ funcionario.correo }}</td>
+        <td>{{ funcionario.telfono }}</td>
+        <td>{{ funcionario.perfil }}</td>
+        <td>
+            <button name="Edit">edit</button>
+            <button name="Delete">delete</button>
+        </td>
+     </tr>
+            
+    {% endfor %}
+</table>
+</form>

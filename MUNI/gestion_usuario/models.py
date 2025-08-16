@@ -1,11 +1,11 @@
 from django.db import models
 
 class Funcionario(models.Model):
-    nombre = models.CharField(50)
-    apellido = models.CharField(50)
-    correo = models.CharField(100)
-    telfono = models.CharField(50)
-    perfil = models.CharField(50)
+    nombre = models.CharField(max_length=50)
+    apellido = models.CharField(max_length=50)
+    correo = models.CharField(max_length=100)
+    telfono = models.CharField(max_length=50)
+    perfil = models.CharField(max_length=50)
 
 
     def __str__(self) :
