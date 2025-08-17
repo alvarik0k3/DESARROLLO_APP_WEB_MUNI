@@ -11,25 +11,27 @@
         <th>Perfil</th>
         <th>Acciones</th>
     </tr>
+    {%if not form.instance.id%}
     <tr>
-        {% for field in form%}
-        <td>{{field}}</td>
-        {%endfor%}
-        <td><button name="Save">save</button></td>
+    {% include 'gestion_usuario/save.html' %}
     </tr>
+    {%endif%}
     {% for funcionario in funcionario %}
     <tr>
+        {% if funcionario.id == form.instance.id %}
+            {% include 'gestion_usuario/save.html' %}
+        {% else %}
         <td>{{ funcionario.nombre }}</td>
         <td>{{ funcionario.apellido }}</td>
         <td>{{ funcionario.correo }}</td>
         <td>{{ funcionario.telfono }}</td>
         <td>{{ funcionario.perfil }}</td>
         <td>
-            <button name="Edit">edit</button>
-            <button name="Delete">delete</button>
+            <button formnovalidate name="Edit" value= "{{funcionario.id}}">edit</button>
+            <button formnovalidate name="Delete" value= "{{funcionario.id}}">delete</button>
         </td>
      </tr>
-            
+    {% endif %}     
     {% endfor %}
 </table>
 </form>
