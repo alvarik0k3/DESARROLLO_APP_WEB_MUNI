@@ -1,8 +1,8 @@
 from django.forms import ModelForm
-from .models import Funcionario
+from .models import Usuario
 
-#creando el formulario para el modelo Funcionario 
-class FuncionarioForm(ModelForm):
+#creando el formulario para el modelo Usuario
+class UsuarioForm(ModelForm):
     class Meta:
-        model = Funcionario
+        model = Usuario
         fields = ['nombre', 'apellido', 'correo', 'telfono', 'perfil']

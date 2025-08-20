@@ -1,33 +1,33 @@
 from django.shortcuts import render
-from .models import Funcionario
-from .form  import FuncionarioForm
+from .models import Usuario
+from .form  import UsuarioForm
 
 # Create your views here.
 
 def index(request):
     context ={}
-    form = FuncionarioForm()
-    funcionario = Funcionario.objects.all()
-    context['funcionario'] = funcionario
+    form = UsuarioForm()
+    usuario = Usuario.objects.all()
+    context['usuario'] = usuario
     if request.method == "POST":
         if 'Save' in request.POST:
             pk= request.POST.get('Save')
             if not pk:
-                form = FuncionarioForm(request.POST)
+                form = UsuarioForm(request.POST)
                 
             else:
-                funcionario = Funcionario.objects.get(id=pk)
-                form = FuncionarioForm(request.POST, instance=funcionario)
+                usuario = Usuario.objects.get(id=pk)
+                form = UsuarioForm(request.POST, instance=usuario)
             form.save()
-            form = FuncionarioForm()
+            form = UsuarioForm()
         elif 'Delete' in request.POST:
             pk= request.POST.get('Delete')
-            funcionario = Funcionario.objects.get(id=pk)
-            funcionario.delete()
+            usuario = Usuario.objects.get(id=pk)
+            usuario.delete()
         elif 'Edit' in request.POST:
             pk= request.POST.get('Edit')
-            funcionario = Funcionario.objects.get(id=pk)
-            form = FuncionarioForm(instance=funcionario)
-            funcionario = form
+            usuario = Usuario.objects.get(id=pk)
+            form = UsuarioForm(instance=usuario)
+            usuario = form
     context['form'] = form
     return render(request, 'gestion_usuario/index.html', context)

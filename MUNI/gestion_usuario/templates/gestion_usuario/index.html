@@ -16,19 +16,19 @@
     {% include 'gestion_usuario/save.html' %}
     </tr>
     {%endif%}
-    {% for funcionario in funcionario %}
+    {% for usuario in usuario %}
     <tr>
-        {% if funcionario.id == form.instance.id %}
+        {% if usuario.id == form.instance.id %}
             {% include 'gestion_usuario/save.html' %}
         {% else %}
-        <td>{{ funcionario.nombre }}</td>
-        <td>{{ funcionario.apellido }}</td>
-        <td>{{ funcionario.correo }}</td>
-        <td>{{ funcionario.telfono }}</td>
-        <td>{{ funcionario.perfil }}</td>
+        <td>{{ usuario.nombre }}</td>
+        <td>{{ usuario.apellido }}</td>
+        <td>{{ usuario.correo }}</td>
+        <td>{{ usuario.telfono }}</td>
+        <td>{{ usuario.perfil }}</td>
         <td>
-            <button formnovalidate name="Edit" value= "{{funcionario.id}}">edit</button>
-            <button formnovalidate name="Delete" value= "{{funcionario.id}}">delete</button>
+            <button formnovalidate name="Edit" value= "{{usuario.id}}">edit</button>
+            <button formnovalidate name="Delete" value= "{{usuario.id}}">delete</button>
         </td>
      </tr>
     {% endif %}     
