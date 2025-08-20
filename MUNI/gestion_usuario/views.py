@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .models import Usuario
 from .form  import UsuarioForm
 
-# Create your views here.
+# Create your views here. papulen
 
 def index(request):
     context ={}
